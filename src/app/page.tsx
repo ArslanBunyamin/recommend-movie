@@ -31,7 +31,7 @@ export default function Main() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-full w-full pb-24 bg-gradient-to-br from-slate-800 to-slate-950">
+    <div className="flex flex-col justify-center items-center min-h-screen w-full pb-24 bg-gradient-to-br from-slate-800 to-slate-950">
       {loading ? (
         "loading..."
       ) : (
@@ -71,9 +71,9 @@ export default function Main() {
         className="flex justify-center"
       >
         <input
-          className="fixed bottom-0 backdrop-blur-sm bg-slate-50 bg-opacity-40 w-full max-w-3xl p-3 text-lg mb-8  outline-none rounded-lg shadow-xl text-slate-950"
+          className="fixed bottom-0 backdrop-blur-sm border placeholder-slate-800 font-semibold font-mono bg-slate-50 bg-opacity-40 w-full max-w-3xl p-3 text-lg mb-8  outline-none rounded-lg shadow-xl text-slate-950"
           value={prompt}
-          placeholder="Say something..."
+          placeholder="Search similar movies..."
           onChange={(e) => setprompt(e.target.value)}
         />
       </form>
