@@ -84,7 +84,7 @@ export default function Page({ params }: { params: { movieID: string } }) {
             <div className="text-xl md:text-5xl text-center pt-10 pb-3 md:pb-10 font-thin">
               Explore More
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 min-h-screen">
               {similarMovies.map((id) => (
                 <MovieComponent key={id} movieID={id} />
               ))}
