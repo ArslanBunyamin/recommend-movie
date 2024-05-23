@@ -3,7 +3,7 @@
 import axios from "axios";
 import { useState } from "react";
 import MovieComponent from "./components/MovieComponent";
-import LoadingComponent from "./components/LoadingComponent";
+import { PiSpinnerBallDuotone } from "react-icons/pi";
 
 export default function Main() {
   const [movieIDs, setMovieIDs] = useState<string[]>([]);
@@ -22,13 +22,15 @@ export default function Main() {
 
   return (
     <div className="flex flex-col justify-center items-center lg:px-52 min-h-screen w-full pb-12 bg-gradient-to-br from-slate-800 to-slate-950">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-5 md:gap-5">
-        {loading ? (
-          <LoadingComponent />
-        ) : (
-          movieIDs?.map((id) => <MovieComponent movieID={id} key={id} />)
-        )}
-      </div>
+      {loading ? (
+        <PiSpinnerBallDuotone className="text-6xl animate-spin" />
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-5 md:gap-5">
+          {movieIDs?.map((id) => (
+            <MovieComponent movieID={id} key={id} />
+          ))}
+        </div>
+      )}
 
       <form
         onSubmit={(e) => {
