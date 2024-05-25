@@ -70,9 +70,12 @@ export default function Main() {
           <PiSpinnerBallDuotone className="text-6xl animate-spin my-56" />
         ) : (
         <>
-          <div className="font-thin text-center text-6xl py-5 text-white text-opacity-70 ">
-            Explore
-          </div>
+          {
+            !movieIDs.length?(""):
+            (<div className="font-thin text-center text-6xl py-5 text-white text-opacity-70 ">
+              Explore
+            </div>)
+          }
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-5 md:gap-5">
             {movieIDs?.map((id) => (
               <MovieComponent movieID={id} key={id} />
