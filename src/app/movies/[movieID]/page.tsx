@@ -61,21 +61,23 @@ export default function Page({ params }: { params: { movieID: string } }) {
 
               <div className="font-light py-2">
                 {movie?.Ratings.map((rating, index) => (
-                  <div key={index} className=" opacity-80">
+                  <div key={index}>
                     <span className="font-bold">
                       {rating.Source === "Internet Movie Database"
                         ? "IMDB"
                         : rating.Source}
                     </span>
-                    {": " + rating.Value}
+                    <span className="opacity-70">{": " + rating.Value}</span>
                   </div>
                 ))}
               </div>
               <div>
-                <span className="font-bold">Director:</span> {movie?.Director}
+                <span className="font-bold">Director:</span>
+                <span className="opacity-70"> {movie?.Director}</span>
               </div>
               <div>
-                <span className="font-bold">Actors:</span> {movie?.Actors}
+                <span className="font-bold">Actors:</span>
+                <span className="opacity-70"> {movie?.Actors}</span>
               </div>
               <div className="pt-3 opacity-50">{movie?.Released}</div>
             </div>
