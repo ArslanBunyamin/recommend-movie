@@ -66,17 +66,19 @@ export default function Main() {
       </div>
 
       <div className="pt-12" ref={resultsRef}>
-        <div className="font-thin text-center text-6xl py-5 text-white text-opacity-70 ">
-          Explore
-        </div>
         {loading ? (
           <PiSpinnerBallDuotone className="text-6xl animate-spin my-56" />
         ) : (
+        <>
+          <div className="font-thin text-center text-6xl py-5 text-white text-opacity-70 ">
+            Explore
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-5 md:gap-5">
             {movieIDs?.map((id) => (
               <MovieComponent movieID={id} key={id} />
             ))}
           </div>
+        </>
         )}
       </div>
     </div>
