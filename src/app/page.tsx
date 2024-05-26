@@ -23,7 +23,9 @@ export default function Main() {
     const result = await axios.post("./api/recommend", {
       prompt: prompt,
     });
-    setMovieIDs(() => result.data);
+
+    const IDs = Array.from(new Set(result.data)) as string[];
+    setMovieIDs(() => IDs);
     setloading(() => false);
   };
 
@@ -65,23 +67,24 @@ export default function Main() {
         </form>
       </div>
 
-      <div className="pt-12" ref={resultsRef}>
+      <div className="pt-4 min-h-screen flex" ref={resultsRef}>
         {loading ? (
-          <PiSpinnerBallDuotone className="text-6xl animate-spin my-56" />
+          <PiSpinnerBallDuotone className="text-6xl animate-spin self-center" />
         ) : (
-        <>
-          {
-            !movieIDs.length?(""):
-            (<div className="font-thin text-center text-6xl py-5 text-white text-opacity-70 ">
-              Explore
-            </div>)
-          }
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-5 md:gap-5">
-            {movieIDs?.map((id) => (
-              <MovieComponent movieID={id} key={id} />
-            ))}
+          <div>
+            {!movieIDs.length ? (
+              ""
+            ) : (
+              <div className="font-thin text-center text-6xl py-5 text-white text-opacity-70 ">
+                Explore
+              </div>
+            )}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-5 md:gap-5">
+              {movieIDs?.map((id) => (
+                <MovieComponent movieID={id} key={id} />
+              ))}
+            </div>
           </div>
-        </>
         )}
       </div>
     </div>

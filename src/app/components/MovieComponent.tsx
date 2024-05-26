@@ -20,13 +20,13 @@ const MovieComponent = (props: Props) => {
       .then((res) => setmovie(() => res.data));
   }, []);
 
-  return (
+  return movie?.Poster == "N/A" ? null : (
     <Link
       href={`/movies/${movie?.imdbID}`}
       key={movie?.imdbID}
       className="flex flex-col items-center"
     >
-      <div className="rounded-xl overflow-hidden">
+      <div className="rounded-xl overflow-hidden select-none">
         <img className="w-full" src={movie?.Poster} alt={movie?.Title} />
       </div>
       <div className="font-sans py-1">{movie?.Title}</div>
